@@ -1,4 +1,5 @@
 const {
+  log,
   fs,
   TemplateDir,
   SrcDir,
@@ -31,10 +32,10 @@ async function copyTmeplate(fileName) {
   return new Promise((resolve, reject) => {
     fs.ensureDir(targetDir)
       .then(() => {
-        console.log('create template dir success...')
+        log('Create template dir successful...', 'success')
         fs.copy(TemplateDir, targetDir)
           .then(() => {
-            console.log('copy template files success...')
+            log('Copy template files successful...', 'success')
             resolve(targetDir)
           })
           .catch(err => reject(err))
@@ -68,6 +69,6 @@ async function save(target, json) {
 module.exports = async({ fileName, funcName }) => {
   const targetDir = await copyTmeplate(fileName)
   await rewriteTemplate(targetDir, funcName)
-  console.log(`generate ${fileName} success`)
+  log(`Generate ${fileName} successful`, 'success')
   await changeNextPointer()
 }

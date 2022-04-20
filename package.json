@@ -28,6 +28,7 @@
 	"homepage": "https://github.com/Btrya/Handwritten#readme",
 	"dependencies": {
 		"babel-jest": "^27.5.1",
+		"chalk": "^4.1.2",
 		"fs-extra": "^10.1.0",
 		"inquirer": "^8.2.2",
 		"jest": "^27.5.1",

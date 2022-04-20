@@ -1,3 +1,4 @@
+const { log } = require('./log')
 const path = require('path')
 const fs = require('fs-extra')
 const BasePath = path.resolve(__dirname, '../../')
@@ -18,6 +19,7 @@ async function changeNextPointer(nextPointer = null) {
 }
 
 module.exports = {
+  log,
   fs,
   BasePath,
   TemplateDir,

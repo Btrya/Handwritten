@@ -1,4 +1,5 @@
 const {
+  log,
   fs,
   SrcDir,
   readJSONFile,
@@ -13,14 +14,14 @@ function getAllFiles() {
 async function checkFiles(files) {
   const sorted = files.map(item => item.split('.')[0]).sort((a, b) => a - b)
   if (isConsecutiveArray(sorted)) {
-    console.log('No need to fix pointer')
+    log('No need to fix pointer')
   }
   else {
     const point = findNextPointer(sorted)
-    console.log(`Find your pointer must be ${point}`)
+    log(`Find your pointer must be ${point}`, 'warning')
     await readJSONFile()
     await changeNextPointer(point)
-    console.log('Change Success.')
+    log('Change your pointer successful.', 'success')
   }
 }
 
