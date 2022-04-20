@@ -12,8 +12,8 @@ async function readJSONFile() {
   packageObj = await fs.readJson(BasePath + '/package.json')
   return packageObj
 }
-async function changeNextPointer() {
-  packageObj.nextPointer = Number(packageObj.nextPointer) + 1
+async function changeNextPointer(nextPointer = null) {
+  packageObj.nextPointer = nextPointer || Number(packageObj.nextPointer) + 1
   await fs.writeJson(BasePath + '/package.json', packageObj, { spaces: '\t' })
 }
 
