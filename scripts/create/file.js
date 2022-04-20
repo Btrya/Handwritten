@@ -5,7 +5,7 @@ const {
   ReWriteReg,
   TemplateFiles,
   readJSONFile,
-  changeNextPointer
+  changeNextPointer,
 } = require('../utils')
 
 /**
@@ -21,14 +21,13 @@ async function getFileName(fileName) {
   return `/${pointer}.${fileName}`
 }
 
-
 /**
  * 复制模板到 src 目录
  */
 // TODO: add configuration
 // TOFIX: use async await
 async function copyTmeplate(fileName) {
-  return new Promise(async (resolve, reject) => {
+  return new Promise(async(resolve, reject) => {
     const targetDir = SrcDir + await getFileName(fileName)
     fs.ensureDir(targetDir)
       .then(() => {
@@ -40,7 +39,7 @@ async function copyTmeplate(fileName) {
           })
           .catch(err => reject(err))
       })
-      .catch(err => {
+      .catch((err) => {
         reject(err)
       })
   })
@@ -50,7 +49,7 @@ async function copyTmeplate(fileName) {
  * 重写对应模板文件
  */
 async function rewriteTemplate(target, funcName) {
-  for (let file of TemplateFiles) {
+  for (const file of TemplateFiles) {
     const fileJSON = await read(target + file, funcName)
     await save(target + file, fileJSON)
   }
@@ -67,7 +66,7 @@ async function save(target, json) {
 }
 
 module.exports = ({ fileName, funcName }) => {
-  return new Promise(async (resolve, reject) => {
+  return new Promise(async(resolve, reject) => {
     const targetDir = await copyTmeplate(fileName)
     await rewriteTemplate(targetDir, funcName)
     console.log(`generate ${fileName} success`)

@@ -4,7 +4,7 @@ const {
   SrcDir,
   RewriteTarget,
   readJSONFile,
-  changeNextPointer
+  changeNextPointer,
 } = require('../utils')
 
 function getAllFiles() {
@@ -21,7 +21,7 @@ async function checkFiles(files) {
     console.log(`Find your pointer must be ${point}`)
     await readJSONFile()
     await changeNextPointer(point)
-    console.log(`Change Success.`)
+    console.log('Change Success.')
   }
 }
 
@@ -35,9 +35,9 @@ function isConsecutiveArray(arr = []) {
 
 function findNextPointer(arr) {
   const n = arr.length
-  for (let i = 0; i < arr.length; ++i) {
+  for (let i = 0; i < arr.length; ++i)
     if (Number(arr[i]) !== i + 1) return i + 1
-  }
+
   return n + 1
 }
 

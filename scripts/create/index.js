@@ -5,7 +5,7 @@ async function run() {
   const { fileName, funcName } = await runInquirer()
   if (fileName === '' || funcName === '') {
     console.error('fileName or funcName cound not be undefined')
-    return 
+    return
   }
   await createFile({ fileName, funcName })
 }
