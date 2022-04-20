@@ -1,8 +1,6 @@
 const {
   fs,
-  TemplateDir,
   SrcDir,
-  RewriteTarget,
   readJSONFile,
   changeNextPointer,
 } = require('../utils')
@@ -16,7 +14,8 @@ async function checkFiles(files) {
   const sorted = files.map(item => item.split('.')[0]).sort((a, b) => a - b)
   if (isConsecutiveArray(sorted)) {
     console.log('No need to fix pointer')
-  } else {
+  }
+  else {
     const point = findNextPointer(sorted)
     console.log(`Find your pointer must be ${point}`)
     await readJSONFile()
@@ -42,7 +41,7 @@ function findNextPointer(arr) {
 }
 
 module.exports = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const files = getAllFiles()
     checkFiles(files)
     resolve()
